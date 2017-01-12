@@ -10,6 +10,7 @@ import (
   "io/ioutil"
   "encoding/json"
   "bytes"
+  "os"
 )
 
 const (
@@ -87,5 +88,5 @@ func main() {
   router.GET("/", index)
   router.POST("/", index)
   router.POST("/update", update)
-  log.Fatal(http.ListenAndServe(":9091", router))
+  log.Fatal(http.ListenAndServe(":"+os.Getenv("PORT"), router))
 }
